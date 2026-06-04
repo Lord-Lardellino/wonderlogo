@@ -1139,14 +1139,15 @@ footer {
     var(--dark);
 }
 .page-hero-deco {
-  position: absolute; right: 4%;
+  position: absolute; right: 3%;
   top: 50%; transform: translateY(-50%);
   font-family: var(--font-display);
-  font-size: 28vw; font-weight: 700;
-  color: rgba(255,255,255,.025);
+  font-size: 22vw; font-weight: 700;
+  color: rgba(255,255,255,.014);
   line-height: 1; pointer-events: none;
   letter-spacing: -.05em;
   user-select: none;
+  z-index: 0;
 }
 .page-hero-inner { position: relative; z-index: 1; width: 100%; }
 .page-hero-line  { width: 50px; height: 3px; background: var(--lime); margin-bottom: 20px; border-radius: 2px; }
@@ -1242,13 +1243,13 @@ footer {
 /* ─── MACCHINARI DETTAGLIO ───────────────────────────────────────── */
 .mach-detail {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; align-items: stretch; padding: 0;
+  gap: 0; align-items: center; padding: 0;
 }
 .mach-detail--rev .mach-detail__img { order: 2; }
 .mach-detail--rev .mach-detail__body { order: 1; }
 .mach-detail__img {
   position: relative; overflow: hidden;
-  min-height: 420px;
+  height: clamp(440px, 60vh, 620px);
 }
 .mach-detail__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
 .mach-detail:hover .mach-detail__img img { transform: scale(1.04); }

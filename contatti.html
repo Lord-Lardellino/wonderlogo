@@ -83,7 +83,8 @@
       <div class="contact-form rv">
         <div class="s-tag">Scrivici</div>
         <h2 class="s-title" style="margin-bottom:36px">Parliamo del<br>tuo progetto</h2>
-        <form class="cf" id="contactForm">
+        <form class="cf" id="contactForm" action="send.php" method="post">
+          <input type="hidden" name="form_time" id="form_time" value="">
           <div class="cf-row">
             <div class="cf-field">
               <label for="nome">Nome *</label>
@@ -212,35 +213,54 @@
       const form = document.getElementById('contactForm');
       if (!form) return;
 
-      // istante di caricamento: i bot inviano quasi subito
+      // timestamp di caricamento (controllo anti-bot lato server)
       const loadedAt = Date.now();
+      const tsField  = document.getElementById('form_time');
+      if (tsField) tsField.value = String(loadedAt);
 
-      form.addEventListener('submit', e => {
+      const btn = form.querySelector('[type=submit]');
+      const btnText = btn.textContent;
+
+      form.addEventListener('submit', async e => {
         e.preventDefault();
 
-        // ── Filtri anti-bot ──────────────────────────────────────
-        // 1) Honeypot: se il campo nascosto è compilato → è un bot
+        // ── Filtri anti-bot lato client (il server ricontrolla) ──
         const honeypot = form.querySelector('[name="sito-web"]');
-        const tooFast  = (Date.now() - loadedAt) < 2500; // invio < 2,5s
+        const tooFast  = (Date.now() - loadedAt) < 2500;
         if ((honeypot && honeypot.value.trim() !== '') || tooFast) {
-          // Fingiamo successo senza inviare nulla (non diamo indizi al bot)
-          showSuccess();
+          setBtn('✓ Inviato! Ti risponderemo a breve.', true); // fingi successo
           return;
         }
 
-        // ── Invio reale ──────────────────────────────────────────
-        // TODO: collegare a un backend o servizio email (es. Formspree,
-        // EmailJS, o un endpoint PHP). Per ora simuliamo l'invio.
-        showSuccess();
+        setBtn('Invio in corso…', true);
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'X-Requested-With': 'fetch' }
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.ok) {
+            setBtn('✓ Inviato! Ti risponderemo a breve.', true);
+            form.reset();
+          } else {
+            setBtn(data.error || 'Errore nell\'invio. Riprova.', false);
+          }
+        } catch (err) {
+          // backend non raggiungibile (es. anteprima senza PHP)
+          setBtn('Scrivici a info@wonderlogo.net', false);
+        }
       });
 
-      function showSuccess() {
-        const btn = form.querySelector('[type=submit]');
-        btn.textContent = '✓ Inviato! Ti risponderemo a breve.';
-        btn.style.background = 'var(--green)';
-        btn.style.borderColor = 'var(--green)';
-        btn.style.color = 'var(--cream)';
-        btn.disabled = true;
+      function setBtn(text, disabled) {
+        btn.textContent = text;
+        btn.disabled = disabled;
+        if (text.startsWith('✓')) {
+          btn.style.background = 'var(--green)';
+          btn.style.borderColor = 'var(--green)';
+          btn.style.color = 'var(--cream)';
+        }
       }
     })();
   </script>

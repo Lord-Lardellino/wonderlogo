@@ -1,0 +1,7 @@
+{
+  "name": "wonderlogo/sito",
+  "description": "Sito WonderLogo — backend invio form contatti",
+  "require": {
+    "phpmailer/phpmailer": "^6.9"
+  }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macchinari — WonderLogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d6b4a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='38' fill='%23c8d400'%3EW%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cur"></div><div id="cur-ring"></div><div id="bar"></div>
+  <div id="mob">
+    <img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--mob">
+    <ul class="mob-links"><li><a href="chi-siamo.html" data-close-mob>Chi Siamo</a></li><li><a href="servizi.html" data-close-mob>Servizi</a></li><li><a href="prodotti.html" data-close-mob>Prodotti</a></li><li><a href="portfolio.html" data-close-mob>Portfolio</a></li><li><a href="macchinari.html" data-close-mob>Macchinari</a></li><li><a href="contatti.html" data-close-mob>Contattaci</a></li></ul>
+  </div>
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img"></a>
+    <ul class="nav-links"><li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="macchinari.html" class="active">Macchinari</a></li><li><a href="contatti.html" class="nav-cta">Contattaci</a></li></ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background:radial-gradient(ellipse at 30% 50%,rgba(100,70,112,.2),transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(29,107,74,.15),transparent 55%),var(--dark)"></div>
+    <div class="page-hero-deco">M</div>
+    <div class="page-hero-inner container">
+      <div class="page-hero-line"></div>
+      <h1 class="page-hero-title">Macchinari</h1>
+      <p class="page-hero-sub">5 macchinari professionali all'avanguardia per coprire ogni fronte della comunicazione visiva.</p>
+      <nav class="breadcrumb"><a href="index.html">Home</a> / Macchinari</nav>
+    </div>
+  </div>
+
+  <!-- MACCHINARI — layout alternato -->
+  <section style="padding:80px 0 0;">
+
+    <!-- Fuji Revoria -->
+    <div class="mach-detail">
+      <div class="mach-detail__img rv">
+        <img src="images/fujifilm.jpg" alt="Fuji Revoria" loading="lazy">
+        <div class="mach-detail__num">01</div>
+      </div>
+      <div class="mach-detail__body rvr">
+        <div class="s-tag">Piccolo Formato</div>
+        <h2 class="s-title">Fuji Revoria</h2>
+        <p>Stampa digitale di piccolo formato su carta. Tecnologia all'avanguardia con <strong>5 colori</strong>: CMYK + Pink — per risultati cromatici fuori dal comune, impossibili con la stampa tradizionale a 4 colori.</p>
+        <div class="mach-spec">
+          <div class="ms"><strong>Formato</strong>Piccolo formato su carta</div>
+          <div class="ms"><strong>Colori</strong>CMYK + Pink (5 colori)</div>
+          <div class="ms"><strong>Ideale per</strong>Biglietti da visita, brochure, coordinati</div>
+        </div>
+        <div class="mc-tags" style="margin-top:20px">
+          <span>Carta</span><span>5 colori</span><span>Piccolo formato</span><span>Alta definizione</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fuji UV Piano -->
+    <div class="mach-detail mach-detail--rev" style="background:rgba(255,255,255,.02)">
+      <div class="mach-detail__img rv">
+        <img src="images/fuji-uv.jpg" alt="Fuji UV Piano" loading="lazy">
+        <div class="mach-detail__num">02</div>
+      </div>
+      <div class="mach-detail__body rvl">
+        <div class="s-tag">Grande Formato</div>
+        <h2 class="s-title">Fuji UV Piano</h2>
+        <p>Stampante in piano UV per la <strong>stampa diretta su pannelli rigidi</strong> di qualsiasi dimensione, fino a 3×2 metri. La tecnologia UV garantisce colori brillanti e resistenti su qualsiasi materiale.</p>
+        <div class="mach-spec">
+          <div class="ms"><strong>Dimensione max</strong>3×2 metri</div>
+          <div class="ms"><strong>Materiali</strong>Forex, lastra piuma, d-bond, plexiglas, cartone, cartone alveolare</div>
+          <div class="ms"><strong>Tecnica</strong>Stampa UV diretta</div>
+        </div>
+        <div class="mc-tags" style="margin-top:20px">
+          <span>UV</span><span>3×2 m</span><span>Pannelli rigidi</span><span>Plexiglas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plotter HP & Epson -->
+    <div class="mach-detail">
+      <div class="mach-detail__img rv">
+        <img src="images/plotter.jpg" alt="Plotter HP Epson" loading="lazy">
+        <div class="mach-detail__num">03</div>
+      </div>
+      <div class="mach-detail__body rvr">
+        <div class="s-tag">Stampa su Bobina</div>
+        <h2 class="s-title">Plotter HP &amp; Epson</h2>
+        <p>Due plotter da stampa su bobina per la massima flessibilità. Il plotter HP utilizza <strong>inchiostri a base acqua atossici</strong> — sicuri per l'ambiente e conformi alle più stringenti normative.</p>
+        <div class="mach-spec">
+          <div class="ms"><strong>Materiali</strong>Vinili, vinili trasparenti, sabbiato, carta, carta da parati, ferrite, materiale roll-up</div>
+          <div class="ms"><strong>HP</strong>Inchiostri atossici base acqua</div>
+          <div class="ms"><strong>Ideale per</strong>Vetrofanie, roll-up, allestimenti grafici</div>
+        </div>
+        <div class="mc-tags" style="margin-top:20px">
+          <span>Vinili</span><span>Eco-ink</span><span>Carta da parati</span><span>Ferrite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kongsberg -->
+    <div class="mach-detail mach-detail--rev" style="background:rgba(255,255,255,.02)">
+      <div class="mach-detail__img rv">
+        <img src="images/taglio.jpg" alt="Kongsberg" loading="lazy">
+        <div class="mach-detail__num">04</div>
+      </div>
+      <div class="mach-detail__body rvl">
+        <div class="s-tag">Taglio Digitale</div>
+        <h2 class="s-title">Kongsberg</h2>
+        <p>Macchinario da taglio digitale per realizzare <strong>qualsiasi fustella</strong> su materiali rigidi con precisione millimetrica. Dimensione massima 3×2 m. Indispensabile per sagome, espositori e packaging personalizzato.</p>
+        <div class="mach-spec">
+          <div class="ms"><strong>Dimensione max</strong>3×2 metri</div>
+          <div class="ms"><strong>Materiali</strong>Tutti i materiali rigidi (forex, lastra piuma, d-bond, cartone)</div>
+          <div class="ms"><strong>Capacità</strong>Qualsiasi forma e fustella personalizzata</div>
+        </div>
+        <div class="mc-tags" style="margin-top:20px">
+          <span>Taglio fustella</span><span>Sagome custom</span><span>3×2 m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summa -->
+    <div class="mach-detail">
+      <div class="mach-detail__img rv">
+        <img src="images/summa.jpg" alt="Summa" loading="lazy">
+        <div class="mach-detail__num">05</div>
+      </div>
+      <div class="mach-detail__body rvr">
+        <div class="s-tag">Intaglio</div>
+        <h2 class="s-title">Summa</h2>
+        <p>Plotter da intaglio per la creazione di <strong>adesivi in prespaziato</strong> e per il taglio preciso di loghi e grafiche da applicare su tessuto tramite termopressa. Perfetto per insegne luminose, lettere e personalizzazioni abbigliamento.</p>
+        <div class="mach-spec">
+          <div class="ms"><strong>Tecnica</strong>Intaglio di precisione</div>
+          <div class="ms"><strong>Output</strong>Prespaziati, stencil, loghi per tessuto</div>
+          <div class="ms"><strong>Integrazione</strong>Lavora in coppia con la termopressa</div>
+        </div>
+        <div class="mc-tags" style="margin-top:20px">
+          <span>Prespaziati</span><span>Tessuto</span><span>Termopressa</span><span>Insegne</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="cta-wrap"><div class="cta-bg" aria-hidden="true">TECH</div><div class="cta-inner rv"><div class="s-tag cta-tag">Prenota</div><h2 class="s-title">Tecnologia al<br>servizio del tuo brand</h2><p>Contattaci per scoprire come i nostri macchinari possono dare vita alle tue idee.</p><a href="contatti.html" class="btn btn-dark">Scrivici ora →</a></div></div>
+
+  <footer><div class="ft-grid container"><div class="ft-brand"><a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--footer"></a><p class="ft-tagline">Hub creativo per la comunicazione visiva.</p></div><div class="ft-col"><h4>Pagine</h4><ul class="ft-links"><li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="macchinari.html">Macchinari</a></li></ul></div><div class="ft-col"><h4>Prodotti</h4><ul class="ft-links"><li><a href="prodotti.html">Loghi a Rilievo</a></li><li><a href="prodotti.html">Vetrofanie</a></li></ul></div><div class="ft-col"><h4>Contatti</h4><ul class="ft-links"><li><a href="contatti.html">Scrivici</a></li></ul><p style="margin-top:14px;font-size:.76rem;color:rgba(242,239,232,.28)">P.IVA 16878071006</p></div></div><div class="ft-bottom container"><span>© 2026 Wonderlogo s.r.l.s.</span><span>P.IVA 16878071006</span></div></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

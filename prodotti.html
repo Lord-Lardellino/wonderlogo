@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prodotti WonderLogo — Loghi a rilievo, LED, vetrofanie, targhe, pannelli, prespaziati e allestimenti grafici.">
+  <title>Prodotti — WonderLogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d6b4a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='38' fill='%23c8d400'%3EW%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/prodotti.css">
+</head>
+<body class="prodotti-page">
+
+  <div id="cur"></div><div id="cur-ring"></div>
+
+  <div id="mob">
+    <img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--mob">
+    <ul class="mob-links">
+      <li><a href="chi-siamo.html" data-close-mob>Chi Siamo</a></li>
+      <li><a href="servizi.html"   data-close-mob>Servizi</a></li>
+      <li><a href="prodotti.html"  data-close-mob>Prodotti</a></li>
+      <li><a href="portfolio.html" data-close-mob>Portfolio</a></li>
+      <li><a href="macchinari.html" data-close-mob>Macchinari</a></li>
+      <li><a href="contatti.html"  data-close-mob>Contattaci</a></li>
+    </ul>
+  </div>
+
+  <!-- NAV prodotti (versione chiara per visibilità sulle immagini) -->
+  <nav id="nav" class="nav--light">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="servizi.html">Servizi</a></li>
+      <li><a href="prodotti.html" class="active">Prodotti</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="macchinari.html">Macchinari</a></li>
+      <li><a href="contatti.html" class="nav-cta">Contattaci</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- Indicatori -->
+  <div class="prod-counter" aria-hidden="true">
+    <span id="prod-current">01</span><span class="prod-counter__sep"></span><span id="prod-total">08</span>
+  </div>
+  <div class="prod-hint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M5 13l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Scorri
+  </div>
+
+  <!-- ═══ SEZIONI PRODOTTO ════════════════════════════════════════════
+       Ogni section è un prodotto full-screen.
+       background-image → foto in images/ (vedi images/FOTO-DA-SALVARE.md)
+       data-color → colore overlay brand
+  ═══════════════════════════════════════════════════════════════════ -->
+
+  <section class="prod-section" data-index="0">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(10,20,14,.88) 45%,rgba(10,20,14,.4) 100%),url('images/logo-rilievo.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Best Seller</div>
+        <h2 class="prod-section__title" data-split>Loghi<br>a Rilievo</h2>
+        <p class="prod-section__desc">Il prodotto che ha dato vita a WonderLogo. Loghi tridimensionali su qualsiasi superficie — dalla reception all'insegna, dal tessuto ai pannelli. Ogni logo è un'opera unica, realizzata con materiali certificati di alta qualità.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="1">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(10,10,20,.88) 45%,rgba(10,10,20,.4) 100%),url('images/targa-nera.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Innovativo</div>
+        <h2 class="prod-section__title" data-split>Loghi<br>LED</h2>
+        <p class="prod-section__desc">Illumina il tuo brand con loghi LED personalizzati ad alto impatto visivo. Perfetti per vetrine, reception e spazi corporate. Possibilità di regolare intensità e colore della luce.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="2">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(20,10,5,.88) 45%,rgba(20,10,5,.4) 100%),url('images/targa-premium.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Premium</div>
+        <h2 class="prod-section__title" data-split>Targhe</h2>
+        <p class="prod-section__desc">Targhe professionali per uffici, studi professionali e attività commerciali. Materiali premium, finiture personalizzabili. Attivi anche su MEPA per la Pubblica Amministrazione.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="3">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(5,15,20,.88) 45%,rgba(5,15,20,.4) 100%),url('images/plexi.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Grande Formato</div>
+        <h2 class="prod-section__title" data-split>Pannelli<br>Rigidi</h2>
+        <p class="prod-section__desc">Stampa UV diretta su forex, lastra piuma, d-bond, plexiglas, cartone e cartone alveolare. Dimensioni fino a <strong>3×2 metri</strong> in un'unica stampa. Ideale per allestimenti, insegne e comunicazione outdoor.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="4">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(8,20,8,.88) 45%,rgba(8,20,8,.4) 100%),url('images/vetrofania.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Decorazione</div>
+        <h2 class="prod-section__title" data-split>Vetrofanie</h2>
+        <p class="prod-section__desc">Decorazioni adesive su vetro per negozi, uffici e allestimenti creativi. Dal sabbiato al colore pieno, dalle vetrofanie opache ai film trasparenti. Progettazione e installazione incluse.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="5">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(20,5,15,.88) 45%,rgba(20,5,15,.4) 100%),url('images/prespaziato.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Allestimenti</div>
+        <h2 class="prod-section__title" data-split>Allestimenti<br>Grafici</h2>
+        <p class="prod-section__desc">Trasformiamo uffici, negozi, mostre ed eventi in ambienti visivamente straordinari. Operiamo in tutta Italia — da nord a sud — con gestione completa della logistica e della trasferta.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="6">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(15,20,5,.88) 45%,rgba(15,20,5,.4) 100%),url('images/prespaziato-2.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Adesivi</div>
+        <h2 class="prod-section__title" data-split>Prespaziati</h2>
+        <p class="prod-section__desc">Adesivi in prespaziato per insegne, lettere scatolate e allestimenti grafici. Realizziamo anche loghi da applicare su tessuto tramite termopressa. Tagli precisi con il plotter Summa.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="prod-section" data-index="7">
+    <div class="prod-section__outer"><div class="prod-section__inner">
+      <div class="prod-section__bg" style="background-image:linear-gradient(to right,rgba(20,15,0,.88) 45%,rgba(20,15,0,.4) 100%),url('images/vetrofania-porta.jpg')"></div>
+      <div class="prod-section__content">
+        <div class="prod-section__tag">Comfort</div>
+        <h2 class="prod-section__title" data-split>Pellicole<br>Solari</h2>
+        <p class="prod-section__desc">Allestimento pellicole a controllo solare per comfort termico, privacy e filtro UV. Ideale per uffici, showroom, abitazioni e qualsiasi vetrata esposta alla luce diretta.</p>
+        <a href="contatti.html" class="prod-section__btn">Richiedi Preventivo →</a>
+      </div>
+    </div></div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/prodotti.js"></script>
+</body>
+</html>

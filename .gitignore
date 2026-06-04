@@ -1,0 +1,10 @@
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+_shot_*.png
+_test.html
+
+# dipendenze (non usate, ma per sicurezza)
+node_modules/

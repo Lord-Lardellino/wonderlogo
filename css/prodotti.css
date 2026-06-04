@@ -1,0 +1,179 @@
+/* ═══════════════════════════════════════════════════════════════
+   prodotti.css — Animated Full-Screen Sections (GSAP Observer)
+   ═══════════════════════════════════════════════════════════════ */
+
+.prodotti-page {
+  background: #0a0a0a;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ─── Sezioni prodotto ───────────────────────────────────────── */
+.prod-section {
+  position: fixed;
+  inset: 0;
+  visibility: hidden;
+  will-change: transform;
+}
+
+.prod-section__outer,
+.prod-section__inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.prod-section__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  height: 130%; /* oversizing per parallax */
+  top: -15%;
+}
+
+/* ─── Contenuto ──────────────────────────────────────────────── */
+.prod-section__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8vw 6vw 9vw;
+  max-width: min(820px, 92vw);
+  z-index: 2;
+}
+
+.prod-section__tag {
+  display: inline-block;
+  background: rgba(200, 212, 0, .15);
+  border: 1px solid rgba(200, 212, 0, .35);
+  color: var(--lime);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  width: fit-content;
+  opacity: 0;
+}
+
+.prod-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  margin-bottom: 24px;
+}
+
+/* Ogni riga: blocco a sé, niente a-capo a metà parola.
+   line-height ampio così ascender/discender non vengono tagliati. */
+.prod-line {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.12;
+}
+
+/* Caratteri per split animation */
+.prod-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40%);
+  will-change: transform, opacity;
+}
+
+.prod-section__desc {
+  font-size: clamp(.9rem, 1.4vw, 1.05rem);
+  line-height: 1.75;
+  color: rgba(242, 239, 232, .7);
+  max-width: 420px;
+  margin-bottom: 34px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.prod-section__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--lime);
+  color: var(--dark);
+  padding: 13px 30px;
+  border-radius: 100px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: background .3s, color .3s;
+}
+
+.prod-section__btn:hover {
+  background: #fff;
+  color: var(--dark);
+}
+
+/* ─── Contatore ──────────────────────────────────────────────── */
+.prod-counter {
+  position: fixed;
+  bottom: 40px;
+  left: 5%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(242, 239, 232, .6);
+}
+
+#prod-current {
+  font-size: 1.8rem;
+  color: var(--lime);
+}
+
+.prod-counter__sep {
+  width: 40px;
+  height: 1px;
+  background: rgba(242, 239, 232, .25);
+}
+
+/* ─── Hint scroll ────────────────────────────────────────────── */
+.prod-hint {
+  position: fixed;
+  bottom: 40px;
+  right: 5%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 232, .4);
+  animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50%       { opacity: .4; transform: translateY(4px); }
+}
+
+/* ─── Nav light override per prodotti ────────────────────────── */
+.prodotti-page .nav-links a { color: var(--cream); }
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .prod-section__content { padding: 6vw 6vw 100px; max-width: 100%; }
+  .prod-section__title   { font-size: clamp(3rem, 12vw, 5rem); }
+  .prod-section__desc    { max-width: 100%; }
+  .prod-counter          { display: none; }
+}

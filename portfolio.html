@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio WonderLogo — Galleria di allestimenti, loghi a rilievo, vetrofanie e stampe realizzati per clienti in tutta Italia.">
+  <title>Portfolio — WonderLogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d6b4a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='38' fill='%23c8d400'%3EW%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cur"></div><div id="cur-ring"></div><div id="bar"></div>
+  <div id="mob">
+    <img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--mob">
+    <ul class="mob-links">
+      <li><a href="chi-siamo.html" data-close-mob>Chi Siamo</a></li><li><a href="servizi.html" data-close-mob>Servizi</a></li><li><a href="prodotti.html" data-close-mob>Prodotti</a></li><li><a href="portfolio.html" data-close-mob>Portfolio</a></li><li><a href="macchinari.html" data-close-mob>Macchinari</a></li><li><a href="contatti.html" data-close-mob>Contattaci</a></li>
+    </ul>
+  </div>
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="portfolio.html" class="active">Portfolio</a></li><li><a href="macchinari.html">Macchinari</a></li><li><a href="contatti.html" class="nav-cta">Contattaci</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-deco">P</div>
+    <div class="page-hero-inner container">
+      <div class="page-hero-line"></div>
+      <h1 class="page-hero-title">Portfolio</h1>
+      <p class="page-hero-sub">Una selezione dei nostri allestimenti, loghi e stampe realizzati per clienti in tutta Italia.</p>
+      <nav class="breadcrumb"><a href="index.html">Home</a> / Portfolio</nav>
+    </div>
+  </div>
+
+  <section style="padding:80px 5% 120px;">
+    <div class="container">
+      <div class="gal-filter rv">
+        <button class="gf-btn active" data-filter="all">Tutti</button>
+        <button class="gf-btn" data-filter="allestimenti">Allestimenti</button>
+        <button class="gf-btn" data-filter="loghi">Loghi</button>
+        <button class="gf-btn" data-filter="stampa">Stampa</button>
+        <button class="gf-btn" data-filter="vetrofanie">Vetrofanie</button>
+      </div>
+
+      <div class="gal-grid">
+        <div class="gal-item rv"          data-cat="allestimenti"><img src="images/logo-rilievo.jpg" alt="Allestimento ufficio" loading="lazy"><div class="gal-overlay"><span>Allestimento Ufficio</span><em>Milano</em></div></div>
+        <div class="gal-item rv d1"       data-cat="loghi"><img src="images/rilievo-dettaglio.jpg" alt="Logo a rilievo" loading="lazy"><div class="gal-overlay"><span>Logo a Rilievo</span><em>Roma</em></div></div>
+        <div class="gal-item rv d2"       data-cat="vetrofanie"><img src="images/vetrofania.jpg" alt="Vetrofania" loading="lazy"><div class="gal-overlay"><span>Vetrofania Negozio</span><em>Roma</em></div></div>
+        <div class="gal-item rv d1"       data-cat="allestimenti"><img src="images/prespaziato.jpg" alt="Allestimento evento" loading="lazy"><div class="gal-overlay"><span>Allestimento Evento</span><em>Napoli</em></div></div>
+        <div class="gal-item rv d2"       data-cat="stampa"><img src="images/plexi.jpg" alt="Pannello forex" loading="lazy"><div class="gal-overlay"><span>Stampa su Plexiglas</span><em>Genzano</em></div></div>
+        <div class="gal-item rv d3"       data-cat="loghi"><img src="images/targa-nera.jpg" alt="Logo LED" loading="lazy"><div class="gal-overlay"><span>Logo LED</span><em>Roma</em></div></div>
+        <div class="gal-item rv d2"       data-cat="stampa"><img src="images/biglietti.jpg" alt="Banner" loading="lazy"><div class="gal-overlay"><span>Banner Pubblicitario</span><em>Frascati</em></div></div>
+        <div class="gal-item rv d3"       data-cat="allestimenti"><img src="images/brochure.jpg" alt="Mostra" loading="lazy"><div class="gal-overlay"><span>Allestimento Mostra</span><em>Roma</em></div></div>
+        <div class="gal-item rv d4"       data-cat="loghi"><img src="images/targa-premium.jpg" alt="Coordinato" loading="lazy"><div class="gal-overlay"><span>Coordinato Aziendale</span><em>Velletri</em></div></div>
+        <div class="gal-item rv d1"       data-cat="vetrofanie"><img src="images/vetrofania-porta.jpg" alt="Vetrofania" loading="lazy"><div class="gal-overlay"><span>Vetrofania Studio</span><em>Genzano</em></div></div>
+        <div class="gal-item rv d2"       data-cat="allestimenti"><img src="images/tshirt.jpg" alt="Stand evento" loading="lazy"><div class="gal-overlay"><span>Stand Corporate</span><em>Fiumicino</em></div></div>
+        <div class="gal-item rv d3"       data-cat="stampa"><img src="images/gadget-stickers.jpg" alt="Roll-up" loading="lazy"><div class="gal-overlay"><span>Roll-up &amp; Banner</span><em>Roma</em></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-wrap"><div class="cta-bg" aria-hidden="true">WORK</div><div class="cta-inner rv"><div class="s-tag cta-tag">Collaboriamo</div><h2 class="s-title">Il tuo progetto<br>nel nostro portfolio?</h2><p>Contattaci per un preventivo. Potremmo realizzare insieme il tuo prossimo grande lavoro.</p><a href="contatti.html" class="btn btn-dark">Scrivici ora →</a></div></div>
+
+  <footer><div class="ft-grid container"><div class="ft-brand"><a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--footer"></a><p class="ft-tagline">Hub creativo per la comunicazione visiva.</p></div><div class="ft-col"><h4>Pagine</h4><ul class="ft-links"><li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="macchinari.html">Macchinari</a></li></ul></div><div class="ft-col"><h4>Prodotti</h4><ul class="ft-links"><li><a href="prodotti.html">Loghi a Rilievo</a></li><li><a href="prodotti.html">Vetrofanie</a></li><li><a href="prodotti.html">Targhe</a></li></ul></div><div class="ft-col"><h4>Contatti</h4><ul class="ft-links"><li><a href="contatti.html">Scrivici</a></li></ul><p style="margin-top:14px;font-size:.76rem;color:rgba(242,239,232,.28)">P.IVA 16878071006</p></div></div><div class="ft-bottom container"><span>© 2026 Wonderlogo s.r.l.s.</span><span>P.IVA 16878071006</span></div></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script defer>
+    document.querySelectorAll('.gf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.gal-item').forEach(item => {
+          item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

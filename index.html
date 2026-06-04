@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WonderLogo — Hub creativo di comunicazione visiva. Loghi a rilievo, stampa digitale, allestimenti grafici.">
+  <title>WonderLogo — Hub Creativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d6b4a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='38' fill='%23c8d400'%3EW%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <div id="bar"></div>
+
+  <div id="pre">
+    <div class="pre-logo"><span class="pre-wonder">Wonder</span><span class="pre-logo-em">Logo</span></div>
+    <div class="pre-line"></div>
+  </div>
+
+  <div id="mob">
+    <img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--mob">
+    <ul class="mob-links">
+      <li><a href="chi-siamo.html" data-close-mob>Chi Siamo</a></li>
+      <li><a href="servizi.html"   data-close-mob>Servizi</a></li>
+      <li><a href="prodotti.html"  data-close-mob>Prodotti</a></li>
+      <li><a href="portfolio.html" data-close-mob>Portfolio</a></li>
+      <li><a href="macchinari.html" data-close-mob>Macchinari</a></li>
+      <li><a href="contatti.html"  data-close-mob>Contattaci</a></li>
+    </ul>
+  </div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="WonderLogo" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="servizi.html">Servizi</a></li>
+      <li><a href="prodotti.html">Prodotti</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="macchinari.html">Macchinari</a></li>
+      <li><a href="contatti.html" class="nav-cta">Contattaci</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="blob-wrap" aria-hidden="true">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    </div>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">Hub Creativo · Roma &amp; Castelli Romani</div>
+      <h1 class="hero-title">
+        <span class="ln"><span>Stampa.</span></span>
+        <span class="ln"><span>Progetta.</span></span>
+        <span class="ln"><span>Meraviglia.</span></span>
+      </h1>
+      <p class="hero-sub">Dal logo a rilievo all'allestimento completo. Soluzioni di comunicazione visiva su misura, prodotte con macchinari d'avanguardia — da Roma a tutta Italia.</p>
+      <div class="hero-btns">
+        <a href="prodotti.html" class="btn btn-lime">Scopri i Prodotti
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="contatti.html" class="btn btn-ghost">Richiedi Preventivo</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="m-item">Loghi a Rilievo<span class="m-dot"></span></div>
+      <div class="m-item">Stampa Grande Formato<span class="m-dot"></span></div>
+      <div class="m-item">Allestimenti<span class="m-dot"></span></div>
+      <div class="m-item">Vetrofanie<span class="m-dot"></span></div>
+      <div class="m-item">Loghi LED<span class="m-dot"></span></div>
+      <div class="m-item">Branding &amp; Grafica<span class="m-dot"></span></div>
+      <div class="m-item">Targhe<span class="m-dot"></span></div>
+      <div class="m-item">Prespaziati<span class="m-dot"></span></div>
+      <div class="m-item">Roll-up &amp; Banner<span class="m-dot"></span></div>
+      <div class="m-item">Pellicole Solari<span class="m-dot"></span></div>
+      <div class="m-item">Loghi a Rilievo<span class="m-dot"></span></div>
+      <div class="m-item">Stampa Grande Formato<span class="m-dot"></span></div>
+      <div class="m-item">Allestimenti<span class="m-dot"></span></div>
+      <div class="m-item">Vetrofanie<span class="m-dot"></span></div>
+      <div class="m-item">Loghi LED<span class="m-dot"></span></div>
+      <div class="m-item">Branding &amp; Grafica<span class="m-dot"></span></div>
+      <div class="m-item">Targhe<span class="m-dot"></span></div>
+      <div class="m-item">Prespaziati<span class="m-dot"></span></div>
+      <div class="m-item">Roll-up &amp; Banner<span class="m-dot"></span></div>
+      <div class="m-item">Pellicole Solari<span class="m-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-wrap">
+    <div class="stats-inner container">
+      <div class="stat rv"><div class="stat-n"><span class="cnt" data-t="30">0</span><sup>+</sup></div><div class="stat-l">Anni di Esperienza</div></div>
+      <div class="stat rv d1"><div class="stat-n"><span class="cnt" data-t="500">0</span><sup>+</sup></div><div class="stat-l">Clienti Soddisfatti</div></div>
+      <div class="stat rv d2"><div class="stat-n"><span class="cnt" data-t="5">0</span></div><div class="stat-l">Macchinari Pro</div></div>
+      <div class="stat rv d3"><div class="stat-n">360<sup>°</sup></div><div class="stat-l">Soluzioni Complete</div></div>
+    </div>
+  </div>
+
+  <!-- PAGINE PREVIEW -->
+  <section style="padding:100px 5%;background:var(--dark);">
+    <div class="container">
+      <div class="s-tag">Esplora</div>
+      <h2 class="s-title rv" style="margin-bottom:50px">Cosa possiamo<br>fare per te</h2>
+      <div class="home-grid">
+        <a href="servizi.html" class="home-card rv">
+          <div class="home-card__img"><img src="images/biglietti.jpg" alt="Servizi" loading="lazy"></div>
+          <div class="home-card__body">
+            <div class="home-card__num">01</div>
+            <div class="home-card__title">Servizi</div>
+            <div class="home-card__desc">Stampa piccolo e grande formato, grafica e allestimenti grafici per ogni esigenza.</div>
+            <div class="home-card__arrow">→</div>
+          </div>
+        </a>
+        <a href="prodotti.html" class="home-card rv d1">
+          <div class="home-card__img"><img src="images/logo-rilievo.jpg" alt="Prodotti" loading="lazy"></div>
+          <div class="home-card__body">
+            <div class="home-card__num">02</div>
+            <div class="home-card__title">Prodotti Focus</div>
+            <div class="home-card__desc">Loghi a rilievo, LED, vetrofanie, targhe, pannelli, prespaziati e molto altro.</div>
+            <div class="home-card__arrow">→</div>
+          </div>
+        </a>
+        <a href="portfolio.html" class="home-card rv d2">
+          <div class="home-card__img"><img src="images/prespaziato.jpg" alt="Portfolio" loading="lazy"></div>
+          <div class="home-card__body">
+            <div class="home-card__num">03</div>
+            <div class="home-card__title">Portfolio</div>
+            <div class="home-card__desc">Una selezione di allestimenti, loghi e stampe realizzati in tutta Italia.</div>
+            <div class="home-card__arrow">→</div>
+          </div>
+        </a>
+        <a href="macchinari.html" class="home-card rv d3">
+          <div class="home-card__img"><img src="images/fujifilm.jpg" alt="Macchinari" loading="lazy"></div>
+          <div class="home-card__body">
+            <div class="home-card__num">04</div>
+            <div class="home-card__title">Macchinari</div>
+            <div class="home-card__desc">5 macchinari professionali per coprire ogni fronte della comunicazione visiva.</div>
+            <div class="home-card__arrow">→</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COME LAVORIAMO -->
+  <div class="process-wrap">
+    <div class="container">
+      <div class="s-tag">Come Lavoriamo</div>
+      <h2 class="s-title rv">Dal brief al prodotto<br>finito, insieme a te</h2>
+      <div class="process-grid">
+        <div class="proc rv"><div class="proc-icon">💬</div><div class="proc-num">01</div><div class="proc-title">Consulenza</div><div class="proc-desc">Ascoltiamo le tue esigenze e proponiamo soluzioni personalizzate. Preventivo gratuito.</div></div>
+        <div class="proc rv d1"><div class="proc-icon">✏️</div><div class="proc-num">02</div><div class="proc-title">Progettazione</div><div class="proc-desc">Grafica, render o file di stampa. Ti mostriamo l'anteprima prima della produzione.</div></div>
+        <div class="proc rv d2"><div class="proc-icon">⚙️</div><div class="proc-num">03</div><div class="proc-title">Produzione</div><div class="proc-desc">Macchinari all'avanguardia, produzione sartoriale nel rispetto di tempi e qualità.</div></div>
+        <div class="proc rv d3"><div class="proc-icon">🚚</div><div class="proc-num">04</div><div class="proc-title">Consegna &amp; Allestimento</div><div class="proc-desc">Consegniamo in tutta Italia. Per gli allestimenti siamo presenti in loco.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <div class="cta-bg" aria-hidden="true">WONDER</div>
+    <div class="cta-inner rv">
+      <div class="s-tag cta-tag">Inizia Ora</div>
+      <h2 class="s-title">Pronti a creare<br>qualcosa di straordinario?</h2>
+      <p>Contattaci per un preventivo gratuito. Lavoriamo per tutta Italia.</p>
+      <a href="contatti.html" class="btn btn-dark">Scrivici ora <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-grid container">
+      <div class="ft-brand">
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="WonderLogo" class="logo-img logo-img--footer"></a>
+        <p class="ft-tagline">Hub creativo per la comunicazione visiva.<br>Stampa, grafica e allestimenti su misura.</p>
+        <div class="ft-socials">
+          <a href="#" class="soc" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="soc" title="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>Pagine</h4><ul class="ft-links"><li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="servizi.html">Servizi</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="macchinari.html">Macchinari</a></li></ul></div>
+      <div class="ft-col"><h4>Prodotti</h4><ul class="ft-links"><li><a href="prodotti.html">Loghi a Rilievo</a></li><li><a href="prodotti.html">Loghi LED</a></li><li><a href="prodotti.html">Vetrofanie</a></li><li><a href="prodotti.html">Targhe</a></li><li><a href="prodotti.html">Prespaziati</a></li></ul></div>
+      <div class="ft-col"><h4>Contatti</h4><ul class="ft-links"><li><a href="contatti.html">Scrivici</a></li><li><a href="#">MEPA</a></li></ul><p style="margin-top:14px;font-size:.76rem;color:rgba(242,239,232,.28);line-height:1.7">P.IVA 16878071006<br>v.le Capitan Casella 50<br>00122 Ostia (Roma)</p></div>
+    </div>
+    <div class="ft-bottom container">
+      <span>© 2026 Wonderlogo s.r.l.s.</span>
+      <span>P.IVA 16878071006 — SDI: M5UXCRI</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

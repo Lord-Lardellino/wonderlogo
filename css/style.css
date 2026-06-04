@@ -133,14 +133,14 @@ body {
 }
 
 /* ─── NAVIGAZIONE ────────────────────────────────────────────────── */
-nav {
+#nav {
   position: fixed; inset: 0 0 auto 0;
   z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 22px 5%;
   transition: background .4s, padding .4s, backdrop-filter .4s;
 }
-nav.scrolled {
+#nav.scrolled {
   background: rgba(15, 15, 15, .88);
   backdrop-filter: blur(22px);
   padding: 14px 5%;

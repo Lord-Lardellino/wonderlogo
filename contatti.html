@@ -2,12 +2,56 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contatti — WonderLogo</title>
+  <title>Contatti — Richiedi un preventivo gratuito | WonderLogo</title>
+  <meta name="description" content="Contatta WonderLogo per un preventivo gratuito su stampa, comunicazione visiva e allestimenti a Roma e nei Castelli Romani. Email info@wonderlogo.net, tel +39 366 9936352.">
+  <link rel="canonical" href="https://www.wonderlogo.it/contatti.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WonderLogo">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="Contatti WonderLogo — Richiedi un preventivo gratuito">
+  <meta property="og:description" content="Stampa, comunicazione visiva e allestimenti a Roma e Castelli Romani. Email info@wonderlogo.net · tel +39 366 9936352.">
+  <meta property="og:url" content="https://www.wonderlogo.it/contatti.html">
+  <meta property="og:image" content="https://www.wonderlogo.it/images/consulenza.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d6b4a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='38' fill='%23c8d400'%3EW%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contatti — WonderLogo",
+    "url": "https://www.wonderlogo.it/contatti.html",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "@id": "https://www.wonderlogo.it/#business",
+      "name": "WonderLogo",
+      "email": "info@wonderlogo.net",
+      "telephone": "+39 366 9936352",
+      "vatID": "IT16878071006",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Capitan Casella, 50",
+        "postalCode": "00122",
+        "addressLocality": "Roma",
+        "addressRegion": "RM",
+        "addressCountry": "IT"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "preventivi e informazioni",
+        "email": "info@wonderlogo.net",
+        "telephone": "+39 366 9936352",
+        "availableLanguage": "Italian"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <div id="cur"></div><div id="cur-ring"></div><div id="bar"></div>
@@ -60,6 +104,12 @@
               <input type="tel" id="telefono" name="telefono" placeholder="+39 000 000 0000">
             </div>
           </div>
+          <!-- Honeypot anti-bot: nascosto ai visitatori, i bot tendono a compilarlo -->
+          <div class="cf-hp" aria-hidden="true">
+            <label for="sito-web">Non compilare questo campo</label>
+            <input type="text" id="sito-web" name="sito-web" tabindex="-1" autocomplete="off">
+          </div>
+
           <div class="cf-field">
             <label for="servizio">Servizio di interesse</label>
             <select id="servizio" name="servizio">
@@ -101,7 +151,7 @@
           <div class="ci-icon">📍</div>
           <div class="ci-body">
             <div class="ci-title">Sede Legale</div>
-            <p>v.le Capitan Casella, 50<br>00122 Ostia (Roma)</p>
+            <p>Via Capitan Casella, 50<br>00122 Roma (Ostia)</p>
           </div>
         </div>
         <div class="ci-block">
@@ -115,7 +165,14 @@
           <div class="ci-icon">📧</div>
           <div class="ci-body">
             <div class="ci-title">Email</div>
-            <a href="mailto:info@wonderlogo.it">info@wonderlogo.it</a>
+            <a href="mailto:info@wonderlogo.net">info@wonderlogo.net</a>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">📞</div>
+          <div class="ci-body">
+            <div class="ci-title">Telefono</div>
+            <a href="tel:+393669936352">+39 366 9936352</a>
           </div>
         </div>
         <div class="ci-block">
@@ -151,15 +208,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
   <script defer>
-    document.getElementById('contactForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = e.target.querySelector('[type=submit]');
-      btn.textContent = '✓ Inviato! Ti risponderemo a breve.';
-      btn.style.background = 'var(--green)';
-      btn.style.borderColor = 'var(--green)';
-      btn.style.color = 'var(--cream)';
-      btn.disabled = true;
-    });
+    (function () {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      // istante di caricamento: i bot inviano quasi subito
+      const loadedAt = Date.now();
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // ── Filtri anti-bot ──────────────────────────────────────
+        // 1) Honeypot: se il campo nascosto è compilato → è un bot
+        const honeypot = form.querySelector('[name="sito-web"]');
+        const tooFast  = (Date.now() - loadedAt) < 2500; // invio < 2,5s
+        if ((honeypot && honeypot.value.trim() !== '') || tooFast) {
+          // Fingiamo successo senza inviare nulla (non diamo indizi al bot)
+          showSuccess();
+          return;
+        }
+
+        // ── Invio reale ──────────────────────────────────────────
+        // TODO: collegare a un backend o servizio email (es. Formspree,
+        // EmailJS, o un endpoint PHP). Per ora simuliamo l'invio.
+        showSuccess();
+      });
+
+      function showSuccess() {
+        const btn = form.querySelector('[type=submit]');
+        btn.textContent = '✓ Inviato! Ti risponderemo a breve.';
+        btn.style.background = 'var(--green)';
+        btn.style.borderColor = 'var(--green)';
+        btn.style.color = 'var(--cream)';
+        btn.disabled = true;
+      }
+    })();
   </script>
 </body>
 </html>

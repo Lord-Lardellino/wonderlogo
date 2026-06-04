@@ -62,18 +62,6 @@ window.addEventListener('load', () => {
     alpha: Math.random() * .55 + .1,
   }));
 
-  /* Parole fluttuanti */
-  const WORDS = ['STAMPA', 'LOGO', 'DESIGN', 'BRAND', 'PRINT', 'VISUAL', 'WONDER', 'CREAT'];
-  const floaters = WORDS.map(w => ({
-    text:  w,
-    x:     Math.random() * canvas.width,
-    y:     Math.random() * canvas.height,
-    vx:    (Math.random() - .5) * .28,
-    vy:    (Math.random() - .5) * .28,
-    size:  Math.floor(Math.random() * 38 + 22),
-    alpha: Math.random() * .07 + .03,
-  }));
-
   /* ─── Loop di disegno ─────────────────────────────────────────── */
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -109,20 +97,6 @@ window.addEventListener('load', () => {
       p.y += p.vy;
       if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
       if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-    });
-
-    /* Parole fluttuanti */
-    ctx.textBaseline = 'middle';
-    floaters.forEach(f => {
-      ctx.font      = `800 ${f.size}px 'Syne', sans-serif`;
-      ctx.fillStyle = `rgba(242,239,232,${f.alpha})`;
-      ctx.fillText(f.text, f.x, f.y);
-
-      f.x += f.vx;
-      f.y += f.vy;
-      const w = ctx.measureText(f.text).width;
-      if (f.x + w < -10 || f.x > canvas.width  + 10) f.vx *= -1;
-      if (f.y < -10      || f.y > canvas.height + 10) f.vy *= -1;
     });
 
     requestAnimationFrame(draw);

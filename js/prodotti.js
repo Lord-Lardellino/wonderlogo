@@ -172,7 +172,24 @@ document.addEventListener('wheel', () => {
   }
 }, { once: true });
 
-/* ─── Inizia dalla prima sezione ─────────────────────────────── */
-goTo(0, 1);
+/* ─── Vai alla sezione indicata dall'hash (es. #vetrofanie) ──── */
+function indexFromHash() {
+  const id = decodeURIComponent(location.hash.replace('#', '')).trim();
+  if (!id) return 0;
+  const target = document.getElementById(id);
+  if (!target || !target.classList.contains('prod-section')) return 0;
+  const i = Array.prototype.indexOf.call(sections, target);
+  return i < 0 ? 0 : i;
+}
+
+/* Cambio hash mentre si è già sulla pagina (link footer/menu) */
+window.addEventListener('hashchange', () => {
+  if (animating) return;
+  const i = indexFromHash();
+  if (i !== currentIndex) goTo(i, i > currentIndex ? 1 : -1);
+});
+
+/* ─── Inizia dalla sezione giusta (hash o prima) ─────────────── */
+goTo(indexFromHash(), 1);
 
 } /* fine initProdotti() */

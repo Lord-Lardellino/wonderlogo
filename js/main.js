@@ -3,14 +3,22 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── PRELOADER (solo home) ──────────────────────────────────────── */
-window.addEventListener('load', () => {
-  const pre = document.getElementById('pre');
-  if (!pre) return;
-  setTimeout(() => {
-    pre.classList.add('out');
-    setTimeout(() => { pre.style.display = 'none'; }, 680);
-  }, 2200);
-});
+(function initPreloader() {
+  const hide = () => {
+    const pre = document.getElementById('pre');
+    if (!pre || pre.dataset.done) return;
+    pre.dataset.done = '1';
+    setTimeout(() => {
+      pre.classList.add('out');
+      setTimeout(() => { pre.style.display = 'none'; }, 680);
+    }, 2200);
+  };
+  // Non dipendere da 'load' (può non scattare se una risorsa è lenta/bloccata)
+  if (document.readyState !== 'loading') hide();
+  else document.addEventListener('DOMContentLoaded', hide);
+  // Rete di sicurezza assoluta
+  setTimeout(hide, 5000);
+})();
 
 /* ─── PAGE HERO — ingresso (pagine interne) ──────────────────────── */
 (function initPageHero() {

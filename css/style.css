@@ -1271,7 +1271,15 @@ footer {
 .si--focus { background: rgba(200,212,0,.07); border-color: rgba(200,212,0,.18); color: var(--cream); }
 
 /* ─── TEAM FULL (chi-siamo) ──────────────────────────────────────── */
-.team-full { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 48px; }
+.team-hero-img {
+  width: 100%; aspect-ratio: 16 / 9;
+  margin: 48px 0 0; border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.07);
+}
+.team-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 11%; display: block; }
+@media (max-width: 640px) { .team-hero-img { aspect-ratio: 4 / 3; } }
+
+.team-full { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
 .tf-card {
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.07);
@@ -1279,8 +1287,8 @@ footer {
   transition: all .4s var(--ease); cursor: none;
 }
 .tf-card:hover { border-color: rgba(200,212,0,.2); transform: translateY(-5px); }
-.tf-img { height: 280px; overflow: hidden; }
-.tf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; display: block; }
+.tf-img { aspect-ratio: 4 / 5; overflow: hidden; }
+.tf-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transition: transform .5s; display: block; }
 .tf-card:hover .tf-img img { transform: scale(1.05); }
 .tf-body { padding: 28px 30px; }
 .tf-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
@@ -1435,3 +1443,80 @@ footer {
   .cf-row       { grid-template-columns: 1fr; }
   .page-hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
 }
+
+/* ─── CAROSELLO REALIZZAZIONI (portfolio) ───────────────────────── */
+.works-car {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(29,107,74,.35), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(102,68,112,.35), transparent 60%),
+    #131313;
+  border: 1px solid rgba(242,239,232,.08);
+}
+.works-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+@media (max-width: 640px) { .works-stage { aspect-ratio: 4 / 5; } }
+
+.work-slide {
+  position: absolute; inset: 0; margin: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .7s ease;
+}
+.work-slide.is-active { opacity: 1; visibility: visible; }
+.work-slide img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  display: block;
+}
+.work-slide figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 60px 28px 22px;
+  background: linear-gradient(to top, rgba(10,10,10,.85), transparent);
+  pointer-events: none;
+}
+.work-slide figcaption span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  font-weight: 600; color: var(--cream);
+}
+.work-slide figcaption em {
+  font-style: normal;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--lime);
+}
+
+.works-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 4;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15,15,15,.42);
+  border: 1px solid rgba(242,239,232,.2);
+  color: var(--cream);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  cursor: pointer; opacity: .7;
+  transition: opacity .25s, background .25s, color .25s, border-color .25s;
+}
+.works-arrow:hover { opacity: 1; background: var(--lime); color: var(--dark); border-color: var(--lime); }
+.works-arrow.prev { left: 16px; }
+.works-arrow.next { right: 16px; }
+
+.works-dots {
+  display: flex; justify-content: center; gap: 9px;
+  padding: 18px 0 4px;
+}
+.works-dots button {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(242,239,232,.25);
+  border: none; padding: 0; cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.works-dots button.is-active { background: var(--lime); transform: scale(1.3); }

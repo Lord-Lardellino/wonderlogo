@@ -64,8 +64,34 @@
     </div>
   </div>
 
-  <section style="padding:80px 5% 120px;">
+  <!-- CAROSELLO REALIZZAZIONI -->
+  <section style="padding:70px 5% 20px;">
     <div class="container">
+      <div class="s-tag rv">In evidenza</div>
+      <h2 class="s-title rv" style="margin-bottom:34px">Realizzazioni recenti</h2>
+
+      <div class="works-car rv" id="worksCar">
+        <div class="works-stage">
+          <figure class="work-slide is-active"><img src="images/lavoro-pannello-oceani.jpg" alt="Pannello Giornata Mondiale degli Oceani" loading="lazy"><figcaption><span>Giornata Mondiale degli Oceani</span><em>Pannello grande formato</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-battesimo-backdrop.jpg" alt="Backdrop battesimo" loading="lazy"><figcaption><span>Photo Wall Battesimo</span><em>Allestimento evento</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-logo-soleterre.jpg" alt="Logo a rilievo soleterre" loading="lazy"><figcaption><span>Logo a Rilievo — soleterre</span><em>Insegna ufficio</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-vetrofania-autoscuola.jpg" alt="Vetrofania autoscuola" loading="lazy"><figcaption><span>Vetrofania su Vetro</span><em>Decoro &amp; comunicazione</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-tableau-battesimo.jpg" alt="Tableau battesimo" loading="lazy"><figcaption><span>Tableau Battesimo</span><em>Stampa &amp; allestimento</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-pannello-oceani-2.jpg" alt="Pannello Oceani in loco" loading="lazy"><figcaption><span>Pannello Evento</span><em>Allestimento in loco</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-tableau-castelli.jpg" alt="Tableau Castelli di sabbia" loading="lazy"><figcaption><span>Tableau &ldquo;Castelli di Sabbia&rdquo;</span><em>Segnaposto evento</em></figcaption></figure>
+          <figure class="work-slide"><img src="images/lavoro-battesimo-backdrop-2.jpg" alt="Backdrop battesimo dettaglio" loading="lazy"><figcaption><span>Backdrop Battesimo</span><em>Allestimento evento</em></figcaption></figure>
+        </div>
+        <button class="works-arrow prev" id="worksPrev" type="button" aria-label="Precedente"><svg width="18" height="18" viewBox="0 0 15 15" fill="none"><path d="M13 7.5H2M6 3.5l-4 4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="works-arrow next" id="worksNext" type="button" aria-label="Successivo"><svg width="18" height="18" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="works-dots" id="worksDots" role="tablist" aria-label="Scegli lavoro"></div>
+    </div>
+  </section>
+
+  <section style="padding:50px 5% 120px;">
+    <div class="container">
+      <div class="s-tag rv">Galleria</div>
+      <h2 class="s-title rv" style="margin-bottom:34px">Tutti i lavori</h2>
       <div class="gal-filter rv">
         <button class="gf-btn active" data-filter="all">Tutti</button>
         <button class="gf-btn" data-filter="allestimenti">Allestimenti</button>
@@ -75,18 +101,15 @@
       </div>
 
       <div class="gal-grid">
-        <div class="gal-item rv"          data-cat="allestimenti"><img src="images/logo-rilievo.jpg" alt="Allestimento ufficio" loading="lazy"><div class="gal-overlay"><span>Allestimento Ufficio</span><em>Milano</em></div></div>
-        <div class="gal-item rv d1"       data-cat="loghi"><img src="images/rilievo-dettaglio.jpg" alt="Logo a rilievo" loading="lazy"><div class="gal-overlay"><span>Logo a Rilievo</span><em>Roma</em></div></div>
-        <div class="gal-item rv d2"       data-cat="vetrofanie"><img src="images/vetrofania.jpg" alt="Vetrofania" loading="lazy"><div class="gal-overlay"><span>Vetrofania Negozio</span><em>Roma</em></div></div>
-        <div class="gal-item rv d1"       data-cat="allestimenti"><img src="images/prespaziato.jpg" alt="Allestimento evento" loading="lazy"><div class="gal-overlay"><span>Allestimento Evento</span><em>Napoli</em></div></div>
-        <div class="gal-item rv d2"       data-cat="stampa"><img src="images/plexi.jpg" alt="Pannello forex" loading="lazy"><div class="gal-overlay"><span>Stampa su Plexiglas</span><em>Genzano</em></div></div>
-        <div class="gal-item rv d3"       data-cat="loghi"><img src="images/targa-nera.jpg" alt="Logo LED" loading="lazy"><div class="gal-overlay"><span>Logo LED</span><em>Roma</em></div></div>
-        <div class="gal-item rv d2"       data-cat="stampa"><img src="images/biglietti.jpg" alt="Banner" loading="lazy"><div class="gal-overlay"><span>Banner Pubblicitario</span><em>Frascati</em></div></div>
-        <div class="gal-item rv d3"       data-cat="allestimenti"><img src="images/brochure.jpg" alt="Mostra" loading="lazy"><div class="gal-overlay"><span>Allestimento Mostra</span><em>Roma</em></div></div>
-        <div class="gal-item rv d4"       data-cat="loghi"><img src="images/targa-premium.jpg" alt="Coordinato" loading="lazy"><div class="gal-overlay"><span>Coordinato Aziendale</span><em>Velletri</em></div></div>
-        <div class="gal-item rv d1"       data-cat="vetrofanie"><img src="images/vetrofania-porta.jpg" alt="Vetrofania" loading="lazy"><div class="gal-overlay"><span>Vetrofania Studio</span><em>Genzano</em></div></div>
-        <div class="gal-item rv d2"       data-cat="allestimenti"><img src="images/tshirt.jpg" alt="Stand evento" loading="lazy"><div class="gal-overlay"><span>Stand Corporate</span><em>Fiumicino</em></div></div>
-        <div class="gal-item rv d3"       data-cat="stampa"><img src="images/gadget-stickers.jpg" alt="Roll-up" loading="lazy"><div class="gal-overlay"><span>Roll-up &amp; Banner</span><em>Roma</em></div></div>
+        <div class="gal-item rv"          data-cat="stampa"><img src="images/lavoro-pannello-oceani.jpg" alt="Pannello Giornata Mondiale degli Oceani" loading="lazy"><div class="gal-overlay"><span>Pannello Oceani</span><em>Grande formato</em></div></div>
+        <div class="gal-item rv d1"       data-cat="allestimenti"><img src="images/lavoro-battesimo-backdrop.jpg" alt="Backdrop battesimo" loading="lazy"><div class="gal-overlay"><span>Photo Wall Battesimo</span><em>Allestimento evento</em></div></div>
+        <div class="gal-item rv d2"       data-cat="loghi"><img src="images/lavoro-logo-soleterre.jpg" alt="Logo a rilievo soleterre" loading="lazy"><div class="gal-overlay"><span>Logo a Rilievo</span><em>Insegna ufficio</em></div></div>
+        <div class="gal-item rv d3"       data-cat="loghi"><img src="images/rilievo-dettaglio.jpg" alt="Dettaglio logo a rilievo" loading="lazy"><div class="gal-overlay"><span>Logo a Rilievo — dettaglio</span><em>Finitura premium</em></div></div>
+        <div class="gal-item rv d1"       data-cat="vetrofanie"><img src="images/lavoro-vetrofania-autoscuola.jpg" alt="Vetrofania autoscuola" loading="lazy"><div class="gal-overlay"><span>Vetrofania su Vetro</span><em>Decoro &amp; testi</em></div></div>
+        <div class="gal-item rv d2"       data-cat="allestimenti"><img src="images/lavoro-tableau-battesimo.jpg" alt="Tableau battesimo" loading="lazy"><div class="gal-overlay"><span>Tableau Battesimo</span><em>Stampa &amp; allestimento</em></div></div>
+        <div class="gal-item rv d3"       data-cat="stampa"><img src="images/lavoro-pannello-oceani-2.jpg" alt="Pannello Oceani in loco" loading="lazy"><div class="gal-overlay"><span>Pannello Evento</span><em>Allestimento in loco</em></div></div>
+        <div class="gal-item rv d2"       data-cat="allestimenti"><img src="images/lavoro-tableau-castelli.jpg" alt="Tableau Castelli di sabbia" loading="lazy"><div class="gal-overlay"><span>Tableau Tematico</span><em>Segnaposto evento</em></div></div>
+        <div class="gal-item rv d3"       data-cat="allestimenti"><img src="images/lavoro-battesimo-backdrop-2.jpg" alt="Backdrop battesimo dettaglio" loading="lazy"><div class="gal-overlay"><span>Backdrop Battesimo</span><em>Allestimento evento</em></div></div>
       </div>
     </div>
   </section>
@@ -109,6 +132,48 @@
         });
       });
     });
+
+    /* ─── Carosello realizzazioni ───────────────────────────── */
+    (function initWorksCarousel() {
+      const car = document.getElementById('worksCar');
+      if (!car) return;
+      const slides = Array.from(car.querySelectorAll('.work-slide'));
+      if (slides.length < 2) return;
+
+      const dotsWrap = document.getElementById('worksDots');
+      const prevBtn  = document.getElementById('worksPrev');
+      const nextBtn  = document.getElementById('worksNext');
+      let idx = 0, timer = null;
+      const DELAY = 5000;
+
+      const dots = slides.map((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', 'Lavoro ' + (i + 1));
+        b.addEventListener('click', () => go(i, true));
+        dotsWrap.appendChild(b);
+        return b;
+      });
+
+      function show(i) {
+        slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+        dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      }
+      function go(i, fromUser) {
+        idx = (i + slides.length) % slides.length;
+        show(idx);
+        if (fromUser) restart();
+      }
+      function restart() { clearInterval(timer); timer = setInterval(() => go(idx + 1), DELAY); }
+
+      nextBtn && nextBtn.addEventListener('click', () => go(idx + 1, true));
+      prevBtn && prevBtn.addEventListener('click', () => go(idx - 1, true));
+      car.addEventListener('mouseenter', () => clearInterval(timer));
+      car.addEventListener('mouseleave', restart);
+
+      show(0); restart();
+    })();
   </script>
 </body>
 </html>

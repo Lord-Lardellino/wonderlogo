@@ -25,84 +25,125 @@ window.addEventListener('load', () => {
     .from('.page-hero-deco',  { opacity: 0, scale: .9, duration: 1.2 }, 0);
 })();
 
-/* ─── CANVAS — PLACEHOLDER VIDEO HERO ───────────────────────────── */
-(function initCanvas() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+/* ─── CAROSELLO VIDEO HERO ───────────────────────────────────────
+   👉 Metti qui i tuoi video: il PRIMO della lista = il più bello,
+      viene mostrato per primo appena si atterra sul sito.
+      Tutti i video partono in automatico e SENZA AUDIO (muted).
+      Converti i .mov in .mp4 web e mettili nella cartella video/.
+      (Vedi video/LEGGIMI-VIDEO.md per il comando di conversione.)        */
+const HERO_VIDEOS = [
+  'video/c0035.mp4',   // ⭐ taglio arancione su rosso — il più dinamico, per primo
+  'video/c0033.mp4',   // stampante Fujifilm flatbed (brand + colore)
+  'video/c0036.mp4',   // macro testa di taglio con laser rosso
+  'video/c0032.mp4',   // plotter che stampa pannelli colorati
+  'video/c0034.mp4',   // fresa/intaglio arancione, vista larga
+  'video/c0031.mp4',   // plotter a bobina
+];
 
-  /* Palette brand */
-  const COLORS = ['#1d6b4a', '#c8d400', '#664470', '#3a3246', '#f2efe8'];
+(function initHeroCarousel() {
+  const media = document.getElementById('heroMedia');
+  if (!media) return;
 
-  /* Ridimensiona canvas — usa window per evitare layout shift */
-  function resize() {
-    const hero    = canvas.closest('#hero') || canvas.parentElement;
-    canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
-    canvas.height = hero ? hero.offsetHeight : window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', () => {
-    resize();
-    /* Rimanda le particelle dentro i nuovi confini */
-    particles.forEach(p => {
-      p.x = Math.min(p.x, canvas.width);
-      p.y = Math.min(p.y, canvas.height);
-    });
+  const list = (window.HERO_VIDEOS || HERO_VIDEOS).filter(Boolean);
+  if (!list.length) return;            // niente video → resta lo sfondo blob
+
+  const dotsWrap = document.getElementById('heroDots');
+  const prevBtn  = document.getElementById('heroPrev');
+  const nextBtn  = document.getElementById('heroNext');
+  const single   = list.length === 1;
+
+  /* Crea i <video> (muted = senza audio, autoplay anche su mobile) */
+  const videos = list.map((src, i) => {
+    const v = document.createElement('video');
+    v.src         = src;
+    v.muted       = true;
+    v.defaultMuted = true;
+    v.loop        = single;            // se è uno solo, va in loop
+    v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.preload     = i === 0 ? 'auto' : 'metadata';
+    v.poster      = 'images/logo-rilievo.jpg';
+    media.appendChild(v);
+    return v;
   });
 
-  /* Particelle */
-  const PARTICLE_COUNT = 90;
-  const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
-    x:     Math.random() * canvas.width,
-    y:     Math.random() * canvas.height,
-    vx:    (Math.random() - .5) * .65,
-    vy:    (Math.random() - .5) * .65,
-    r:     Math.random() * 2.2 + .8,
-    color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    alpha: Math.random() * .55 + .1,
-  }));
-
-  /* ─── Loop di disegno ─────────────────────────────────────────── */
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    /* Linee di connessione tra particelle vicine */
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx   = particles[i].x - particles[j].x;
-        const dy   = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(200,212,0,${.055 * (1 - dist / 140)})`;
-          ctx.lineWidth   = .5;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    /* Particelle */
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      /* Converte alpha float in hex a 2 cifre */
-      const hex = Math.round(p.alpha * 255).toString(16).padStart(2, '0');
-      ctx.fillStyle = p.color + hex;
-      ctx.fill();
-
-      /* Movimento */
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  /* Crea i dot (solo se più di un video) */
+  const dots = [];
+  if (dotsWrap && !single) {
+    list.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Video ' + (i + 1));
+      b.addEventListener('click', () => go(i, true));
+      dotsWrap.appendChild(b);
+      dots.push(b);
     });
+  } else if (dotsWrap) {
+    dotsWrap.style.display = 'none';
+  }
+  if (single && prevBtn) prevBtn.style.display = 'none';
+  if (single && nextBtn) nextBtn.style.display = 'none';
 
-    requestAnimationFrame(draw);
+  let idx = 0;
+  let userPaused = false;
+
+  function show(i) {
+    videos.forEach((v, k) => {
+      const active = k === i;
+      v.classList.toggle('is-active', active);
+      if (active) {
+        try { v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+    dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
   }
 
-  draw();
+  function go(i, fromUser) {
+    idx = (i + videos.length) % videos.length;
+    if (fromUser) userPaused = false;
+    show(idx);
+  }
+
+  const next = () => go(idx + 1);
+  const prev = () => go(idx - 1);
+
+  /* Avanza quando il video corrente finisce (se non è in loop) */
+  if (!single) {
+    videos.forEach((v, k) => {
+      v.addEventListener('ended', () => { if (k === idx) next(); });
+      /* Sicurezza: se un video non parte/non ha durata, passa oltre */
+      v.addEventListener('error', () => { if (k === idx) next(); });
+    });
+    nextBtn && nextBtn.addEventListener('click', () => go(idx + 1, true));
+    prevBtn && prevBtn.addEventListener('click', () => go(idx - 1, true));
+
+    /* Avanzamento automatico di sicurezza (clip lunghe o senza evento ended) */
+    setInterval(() => {
+      const v = videos[idx];
+      if (!userPaused && v && v.duration && v.currentTime >= v.duration - 0.3) next();
+    }, 1000);
+  }
+
+  /* Pausa il carosello quando la hero non è visibile (risparmio risorse) */
+  const hero = document.getElementById('hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        const v = videos[idx];
+        if (!v) return;
+        if (en.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.15 }).observe(hero);
+  }
+
+  show(0);
 })();
 
 /* ─── CURSORE CUSTOM ─────────────────────────────────────────────── */

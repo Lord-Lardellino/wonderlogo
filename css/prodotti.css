@@ -65,9 +65,12 @@
   font-size: clamp(2.2rem, 4.5vw, 4.5rem);
   font-weight: 700;
   color: var(--cream);
-  line-height: 1.12;
+  line-height: 1.18;
   letter-spacing: -.02em;
-  margin-bottom: 24px;
+  /* padding-bottom: spazio per le discendenti di Fredoka (es. la "g"),
+     margin-bottom: stacco dal paragrafo */
+  padding-bottom: .12em;
+  margin-bottom: 30px;
 }
 
 /* Ogni riga: blocco a sé, niente a-capo a metà parola.
@@ -75,7 +78,7 @@
 .prod-line {
   display: block;
   white-space: nowrap;
-  line-height: 1.12;
+  line-height: 1.18;
 }
 
 /* Caratteri per split animation */

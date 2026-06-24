@@ -6,17 +6,28 @@
    con i dati della casella email reale (vedi LEGGIMI-EMAIL.md).
    ============================================================ */
 
-/* ===================== CONFIG (DA COMPILARE) ===================== */
-$MAIL_TO     = 'info@wonderlogo.net';        // dove arrivano le richieste
-$MAIL_FROM   = 'no-reply@wonderlogo.it';     // mittente tecnico (meglio sul dominio del sito)
-$MAIL_FROM_NAME = 'Sito WonderLogo';
+/* ===================== CONFIG =====================
+   Le credenziali stanno in mail.config.php (NON versionato).
+   Vedi mail.config.example.php per il modello.
+   ================================================== */
+$cfgFile = __DIR__ . '/mail.config.php';
+if (!file_exists($cfgFile)) {
+  header('Content-Type: application/json; charset=utf-8');
+  http_response_code(500);
+  echo json_encode(['ok' => false, 'error' => 'Server email non configurato (manca mail.config.php).']);
+  exit;
+}
+$cfg = require $cfgFile;
 
-$SMTP_HOST   = 'smtp.IL-TUO-PROVIDER.it';    // es. smtps.aruba.it, authsmtp.register.it, smtp.gmail.com
-$SMTP_USER   = 'no-reply@wonderlogo.it';     // utente SMTP (di solito = email)
-$SMTP_PASS   = 'METTI-LA-PASSWORD-QUI';      // password della casella / app password
-$SMTP_PORT   = 587;                          // 587 (TLS) oppure 465 (SSL)
-$SMTP_SECURE = 'tls';                         // 'tls' per 587, 'ssl' per 465
-/* ================================================================ */
+$MAIL_TO        = $cfg['MAIL_TO'];
+$MAIL_FROM      = $cfg['MAIL_FROM'];
+$MAIL_FROM_NAME = $cfg['MAIL_FROM_NAME'] ?? 'Sito WonderLogo';
+$SMTP_HOST      = $cfg['SMTP_HOST'];
+$SMTP_USER      = $cfg['SMTP_USER'];
+$SMTP_PASS      = $cfg['SMTP_PASS'];
+$SMTP_PORT      = $cfg['SMTP_PORT'] ?? 587;
+$SMTP_SECURE    = $cfg['SMTP_SECURE'] ?? 'tls';
+/* ================================================== */
 
 header('Content-Type: application/json; charset=utf-8');
 

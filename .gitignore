@@ -10,3 +10,7 @@ _test.html
 node_modules/
 vendor/
 composer.lock
+
+# credenziali email — NON committare mai (repo pubblico!)
+mail.config.php
+.env

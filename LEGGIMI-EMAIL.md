@@ -26,17 +26,24 @@ composer install
    ```
 
 ## 2. Inserire i dati della casella email
-Apri `send.php` e compila la sezione **CONFIG (DA COMPILARE)** in cima:
+Le credenziali NON stanno in `send.php` ma in un file separato **non versionato**
+(`mail.config.php`), così la password non finisce mai su GitHub.
 
-| Variabile     | Cosa mettere                                                    |
+1. Copia `mail.config.example.php` → `mail.config.php`
+2. Apri `mail.config.php` e compila i valori:
+
+| Chiave        | Cosa mettere                                                    |
 |---------------|-----------------------------------------------------------------|
-| `$MAIL_TO`    | L'email dove vuoi ricevere le richieste (es. info@wonderlogo.net) |
-| `$MAIL_FROM`  | Un indirizzo del tuo dominio (es. no-reply@wonderlogo.it)        |
-| `$SMTP_HOST`  | Server SMTP del provider (es. `smtps.aruba.it`)                  |
-| `$SMTP_USER`  | Utente SMTP (di solito = la tua email)                           |
-| `$SMTP_PASS`  | Password della casella (o "app password")                        |
-| `$SMTP_PORT`  | `587` (TLS) oppure `465` (SSL)                                   |
-| `$SMTP_SECURE`| `tls` per la 587, `ssl` per la 465                               |
+| `MAIL_TO`     | L'email dove vuoi ricevere le richieste (info@wonderlogo.net)   |
+| `MAIL_FROM`   | Mittente, di norma = casella autenticata (info@wonderlogo.net)  |
+| `SMTP_HOST`   | Server SMTP del provider (es. `smtps.aruba.it`)                 |
+| `SMTP_USER`   | Utente SMTP (di solito = la tua email)                          |
+| `SMTP_PASS`   | Password della casella (o "app password")                       |
+| `SMTP_PORT`   | `587` (TLS) oppure `465` (SSL)                                  |
+| `SMTP_SECURE` | `tls` per la 587, `ssl` per la 465                              |
+
+> `mail.config.php` è già in `.gitignore`: non verrà mai caricato su GitHub.
+> Sul server va caricato a mano via FTP/pannello (non passa da git).
 
 ### Esempi rapidi
 - **Aruba:** host `smtps.aruba.it`, porta `465`, secure `ssl`

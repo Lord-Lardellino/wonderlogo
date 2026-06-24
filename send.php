@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(false, 'Metodo non consentito', 4
 /* ── Config (opzionale): se manca, usa i valori di default ─────── */
 $cfgFile = __DIR__ . '/mail.config.php';
 $cfg = file_exists($cfgFile) ? (require $cfgFile) : [];
-$MAIL_TO        = $cfg['MAIL_TO']        ?? 'info@wonderlogo.net';
-$MAIL_FROM      = $cfg['MAIL_FROM']      ?? 'info@wonderlogo.net';
+$MAIL_TO        = $cfg['MAIL_TO']        ?? 'info@wonderlogo.it';
+$MAIL_FROM      = $cfg['MAIL_FROM']      ?? 'info@wonderlogo.it';
 $MAIL_FROM_NAME = $cfg['MAIL_FROM_NAME'] ?? 'Sito WonderLogo';
 
 /* ── Anti-bot lato server ──────────────────────────────────────── */

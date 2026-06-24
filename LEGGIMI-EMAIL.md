@@ -34,8 +34,8 @@ Le credenziali NON stanno in `send.php` ma in un file separato **non versionato*
 
 | Chiave        | Cosa mettere                                                    |
 |---------------|-----------------------------------------------------------------|
-| `MAIL_TO`     | L'email dove vuoi ricevere le richieste (info@wonderlogo.net)   |
-| `MAIL_FROM`   | Mittente, di norma = casella autenticata (info@wonderlogo.net)  |
+| `MAIL_TO`     | L'email dove vuoi ricevere le richieste (info@wonderlogo.it)   |
+| `MAIL_FROM`   | Mittente, di norma = casella autenticata (info@wonderlogo.it)  |
 | `SMTP_HOST`   | Server SMTP del provider (es. `smtps.aruba.it`)                 |
 | `SMTP_USER`   | Utente SMTP (di solito = la tua email)                          |
 | `SMTP_PASS`   | Password della casella (o "app password")                       |
@@ -61,4 +61,4 @@ tecnico è in `$mail->ErrorInfo` (puoi loggarlo temporaneamente in `send.php`).
 - **Sicurezza:** non committare mai la password su GitHub se il repo è pubblico.
   Valuta di mettere le credenziali in variabili d'ambiente del server.
 - Finché `send.php` non è configurato, il sito mostra all'utente l'invito a
-  scrivere direttamente a `info@wonderlogo.net`.
+  scrivere direttamente a `info@wonderlogo.it`.

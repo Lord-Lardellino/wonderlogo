@@ -16,6 +16,36 @@ function out($ok, $msg = '', $code = 200) {
   exit;
 }
 
+/* Verifica token reCAPTCHA v2 con le API di Google */
+function recaptcha_verify($secret, $token, $ip = '') {
+  $data = http_build_query(['secret' => $secret, 'response' => $token, 'remoteip' => $ip]);
+  $url  = 'https://www.google.com/recaptcha/api/siteverify';
+  $result = false;
+  if (function_exists('curl_init')) {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_POST           => true,
+      CURLOPT_POSTFIELDS     => $data,
+      CURLOPT_TIMEOUT        => 10,
+    ]);
+    $result = curl_exec($ch);
+    curl_close($ch);
+  }
+  if ($result === false && ini_get('allow_url_fopen')) {
+    $ctx = stream_context_create(['http' => [
+      'method'  => 'POST',
+      'header'  => 'Content-Type: application/x-www-form-urlencoded',
+      'content' => $data,
+      'timeout' => 10,
+    ]]);
+    $result = @file_get_contents($url, false, $ctx);
+  }
+  if ($result === false) return false;
+  $json = json_decode($result, true);
+  return !empty($json['success']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(false, 'Metodo non consentito', 405);
 
 /* ── Config (opzionale): se manca, usa i valori di default ─────── */
@@ -24,11 +54,21 @@ $cfg = file_exists($cfgFile) ? (require $cfgFile) : [];
 $MAIL_TO        = $cfg['MAIL_TO']        ?? 'info@wonderlogo.it';
 $MAIL_FROM      = $cfg['MAIL_FROM']      ?? 'info@wonderlogo.it';
 $MAIL_FROM_NAME = $cfg['MAIL_FROM_NAME'] ?? 'Sito WonderLogo';
+$RECAPTCHA_SECRET = $cfg['RECAPTCHA_SECRET'] ?? '';
 
 /* ── Anti-bot lato server ──────────────────────────────────────── */
 if (trim($_POST['sito-web'] ?? '') !== '') out(true);                 // honeypot → fingi successo
 $elapsed = isset($_POST['form_time']) ? (round(microtime(true) * 1000) - (int) $_POST['form_time']) : 99999;
 if ($elapsed >= 0 && $elapsed < 2500) out(true);                       // troppo veloce → bot
+
+// reCAPTCHA: verificato solo se la secret key è configurata in mail.config.php
+if ($RECAPTCHA_SECRET !== '') {
+  $token = $_POST['g-recaptcha-response'] ?? '';
+  if ($token === '')                                       out(false, 'Conferma il reCAPTCHA.');
+  if (!recaptcha_verify($RECAPTCHA_SECRET, $token, $_SERVER['REMOTE_ADDR'] ?? '')) {
+    out(false, 'Verifica anti-bot non superata. Riprova.');
+  }
+}
 
 /* ── Campi e validazione ───────────────────────────────────────── */
 $nome      = trim($_POST['nome'] ?? '');

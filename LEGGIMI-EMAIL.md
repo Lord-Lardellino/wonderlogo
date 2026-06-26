@@ -55,9 +55,22 @@ Le credenziali NON stanno in `send.php` ma in un file separato **non versionato*
 Apri la pagina Contatti online, compila e invia. Se qualcosa non va, l'errore
 tecnico è in `$mail->ErrorInfo` (puoi loggarlo temporaneamente in `send.php`).
 
+## reCAPTCHA (opzionale ma consigliato)
+Il form supporta **Google reCAPTCHA v2** ("Non sono un robot").
+
+1. Vai su https://www.google.com/recaptcha/admin → crea un sito **reCAPTCHA v2 ▸
+   checkbox**, aggiungi i domini (`wonderlogo.it`, `www.wonderlogo.it`).
+2. Ottieni due chiavi:
+   - **Site key** (pubblica) → in `contatti.html` sostituisci `LA-TUA-SITE-KEY`
+     nell'attributo `data-sitekey`.
+   - **Secret key** (privata) → in `mail.config.php` alla voce `RECAPTCHA_SECRET`.
+3. Fatto: se `RECAPTCHA_SECRET` è valorizzata, `send.php` verifica il token con
+   Google e rifiuta gli invii senza spunta. Se la lasci vuota, la verifica è
+   disattivata (restano comunque honeypot + controllo tempo).
+
 ## Note
 - **Anti-bot già attivo:** honeypot (campo nascosto `sito-web`) + controllo del
-  tempo di compilazione, sia lato browser sia lato server in `send.php`.
+  tempo di compilazione + reCAPTCHA, sia lato browser sia lato server in `send.php`.
 - **Sicurezza:** non committare mai la password su GitHub se il repo è pubblico.
   Valuta di mettere le credenziali in variabili d'ambiente del server.
 - Finché `send.php` non è configurato, il sito mostra all'utente l'invito a

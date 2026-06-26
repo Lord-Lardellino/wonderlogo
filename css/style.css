@@ -1429,6 +1429,16 @@ footer {
   overflow: hidden;
 }
 
+/* ─── reCAPTCHA ──────────────────────────────────────────────────── */
+.cf .g-recaptcha { margin: 4px 0 2px; }
+/* su schermi stretti il widget (302px) non deve sforare */
+@media (max-width: 360px) {
+  .cf .g-recaptcha {
+    transform: scale(0.88);
+    transform-origin: 0 0;
+  }
+}
+
 /* ─── GALLERY FILTER ─────────────────────────────────────────────── */
 .gal-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
 .gf-btn {

@@ -13,4 +13,8 @@ return [
   'SMTP_PASS'      => 'LA-PASSWORD-QUI',
   'SMTP_PORT'      => 587,                       // 587 (TLS) oppure 465 (SSL)
   'SMTP_SECURE'    => 'tls',                     // 'tls' per 587, 'ssl' per 465
+
+  // reCAPTCHA v2: SECRET key (privata). Lascia '' per disattivare la verifica.
+  // La SITE key (pubblica) va invece in contatti.html (data-sitekey).
+  'RECAPTCHA_SECRET' => '',
 ];

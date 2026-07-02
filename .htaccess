@@ -1,0 +1,22 @@
+# ============================================================
+#  WonderLogo — redirect 301 verso il dominio canonico
+#  Dominio ufficiale: https://www.wonderlogo.it
+#  Reindirizza: wonderlogo.net, www.wonderlogo.net,
+#               wonderlogo.it (senza www) e http:// → https://www.wonderlogo.it
+#  Il percorso e i parametri della richiesta vengono mantenuti.
+# ============================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Qualsiasi host diverso da www.wonderlogo.it → 301 su www.wonderlogo.it (https)
+  RewriteCond %{HTTP_HOST} !^www\.wonderlogo\.it$ [NC]
+  RewriteRule ^ https://www.wonderlogo.it%{REQUEST_URI} [L,R=301]
+
+  # 2) Già su www.wonderlogo.it ma in http → forza https
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://www.wonderlogo.it%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# (opzionale) pagina 404 personalizzata, se un giorno la crei:
+# ErrorDocument 404 /404.html

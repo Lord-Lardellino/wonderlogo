@@ -1,0 +1,28 @@
+╔══════════════════════════════════════════════════════════════════╗
+║  REDIRECT wonderlogo.net → https://www.wonderlogo.it              ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Questo file va messo nello spazio hosting del dominio .NET,      ║
+║  NON in quello del .it. Il .net oggi ospita un sito separato      ║
+║  ("Wonder Logo – Creative Agency"): lo sostituiamo con un         ║
+║  redirect 301 verso il nuovo sito .it.                            ║
+║                                                                    ║
+║  COME FARE (Aruba):                                                ║
+║  1. Entra nel File Manager / FTP dello spazio del dominio .net    ║
+║     (la cartella dove c'è il vecchio sito .net, es. /htdocs).     ║
+║  2. Rinomina il vecchio  .htaccess  in  .htaccess.OLD  (backup).  ║
+║  3. Crea un nuovo file chiamato esattamente  .htaccess  con       ║
+║     dentro SOLO il blocco qui sotto (tra le righe ----).          ║
+║  4. Salva. Prova https://www.wonderlogo.net → deve portare al .it.║
+║                                                                    ║
+║  Nota: se il .net è un WordPress e vuoi tenerlo, incolla il       ║
+║  blocco PRIMA della riga "# BEGIN WordPress". Se invece il .net   ║
+║  non ti serve più, puoi sostituire tutto il file .htaccess.       ║
+╚══════════════════════════════════════════════════════════════════╝
+
+--------------------------------------------------------------------
+# Redirect 301 di tutto il dominio .net verso il sito ufficiale .it
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^ https://www.wonderlogo.it%{REQUEST_URI} [L,R=301]
+</IfModule>
+--------------------------------------------------------------------

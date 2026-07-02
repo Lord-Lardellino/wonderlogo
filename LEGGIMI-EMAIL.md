@@ -55,18 +55,24 @@ Le credenziali NON stanno in `send.php` ma in un file separato **non versionato*
 Apri la pagina Contatti online, compila e invia. Se qualcosa non va, l'errore
 tecnico è in `$mail->ErrorInfo` (puoi loggarlo temporaneamente in `send.php`).
 
-## reCAPTCHA (opzionale ma consigliato)
-Il form supporta **Google reCAPTCHA v2** ("Non sono un robot").
+## reCAPTCHA v3 (opzionale ma consigliato)
+Il form usa **Google reCAPTCHA v3** (invisibile, senza checkbox: assegna un
+punteggio 0–1 e blocca i punteggi bassi).
 
-1. Vai su https://www.google.com/recaptcha/admin → crea un sito **reCAPTCHA v2 ▸
-   checkbox**, aggiungi i domini (`wonderlogo.it`, `www.wonderlogo.it`).
+1. Vai su https://www.google.com/recaptcha/admin → crea un sito **reCAPTCHA v3**,
+   aggiungi i domini (`wonderlogo.it`, `www.wonderlogo.it`).
 2. Ottieni due chiavi:
-   - **Site key** (pubblica) → in `contatti.html` sostituisci `LA-TUA-SITE-KEY`
-     nell'attributo `data-sitekey`.
+   - **Site key** (pubblica) → in `contatti.html`, nella costante JS
+     `const RECAPTCHA_SITE_KEY = 'LA-TUA-SITE-KEY-V3';` (unico punto da toccare:
+     lo script Google si carica da solo).
    - **Secret key** (privata) → in `mail.config.php` alla voce `RECAPTCHA_SECRET`.
 3. Fatto: se `RECAPTCHA_SECRET` è valorizzata, `send.php` verifica il token con
-   Google e rifiuta gli invii senza spunta. Se la lasci vuota, la verifica è
-   disattivata (restano comunque honeypot + controllo tempo).
+   Google e rifiuta gli invii con `success=false` o punteggio < **0.5** (soglia
+   modificabile in `send.php`). Se lasci vuota la secret (o la site key col
+   segnaposto), la verifica è disattivata: restano comunque honeypot + tempo.
+
+> Nota: v3 mostra un piccolo **badge** reCAPTCHA in basso a destra. Google ne
+> richiede la presenza oppure una nota tipo "Questo sito è protetto da reCAPTCHA".
 
 ## Note
 - **Anti-bot già attivo:** honeypot (campo nascosto `sito-web`) + controllo del

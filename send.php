@@ -43,7 +43,7 @@ function recaptcha_verify($secret, $token, $ip = '') {
   }
   if ($result === false) return false;
   $json = json_decode($result, true);
-  return !empty($json['success']);
+  return is_array($json) ? $json : false;   // ritorna l'esito completo (success, score, action)
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(false, 'Metodo non consentito', 405);
@@ -61,11 +61,13 @@ if (trim($_POST['sito-web'] ?? '') !== '') out(true);                 // honeypo
 $elapsed = isset($_POST['form_time']) ? (round(microtime(true) * 1000) - (int) $_POST['form_time']) : 99999;
 if ($elapsed >= 0 && $elapsed < 2500) out(true);                       // troppo veloce → bot
 
-// reCAPTCHA: verificato solo se la secret key è configurata in mail.config.php
+// reCAPTCHA v3: verificato solo se la secret key è configurata in mail.config.php
 if ($RECAPTCHA_SECRET !== '') {
   $token = $_POST['g-recaptcha-response'] ?? '';
-  if ($token === '')                                       out(false, 'Conferma il reCAPTCHA.');
-  if (!recaptcha_verify($RECAPTCHA_SECRET, $token, $_SERVER['REMOTE_ADDR'] ?? '')) {
+  if ($token === '') out(false, 'Verifica anti-bot mancante. Riprova.');
+  $rc = recaptcha_verify($RECAPTCHA_SECRET, $token, $_SERVER['REMOTE_ADDR'] ?? '');
+  $score = isset($rc['score']) ? (float) $rc['score'] : 1.0;  // v2 non restituisce score
+  if (!$rc || empty($rc['success']) || $score < 0.5) {
     out(false, 'Verifica anti-bot non superata. Riprova.');
   }
 }
